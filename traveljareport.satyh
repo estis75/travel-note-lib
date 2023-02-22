@@ -736,6 +736,7 @@ end = struct
   let-inline \dfn inner = {\emph{#inner;}}
 
   let-inline ctx \footnote it =
+    let ctx = get-standard-context 440pt in
     let ctx = (ctx |> set-font-size font-size-normal) in
     let size = get-font-size ctx in
     let ibf num =
