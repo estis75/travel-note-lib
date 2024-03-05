@@ -1,0 +1,12 @@
+{
+  "name": "Travel Note Extension in SATySFi",
+  "description": "travel-note-lib の補助ツール．経路を自動出力してくれる．",
+  "version": "0.1",
+  "manifest_version": 3,
+  "content_scripts": [
+    {
+      "matches": ["https://transit.yahoo.co.jp/search/*"],
+      "js": ["travel-note-extension.js"]
+    }
+  ]
+}
