@@ -31,10 +31,19 @@ function create_data(route_id_tmp) {
 
   const minLength = Math.min(stations.length, infos.length);
   let results = [];
+  let to_contains_direct_from = undefined;
+  let to_contains_direct_via = undefined;
   for (var i = 0; i < minLength; i++) {
-    const from = stations[i];
-    const via = infos[i];
+    const from = to_contains_direct_from ? to_contains_direct_from : stations[i];
+    const via = to_contains_direct_via ? to_contains_direct_via : infos[i];
+    to_contains_direct_from = undefined;
+    to_contains_direct_via = undefined;
     const to = stations[i+1];
+    if (to.classList.contains("direct")) {
+      to_contains_direct_from = from;
+      to_contains_direct_via = via;
+      continue;
+    }
 
     const from_times = from.querySelector(".time").childNodes;
     let from_time = "";
